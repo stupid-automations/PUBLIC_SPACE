@@ -1,1 +1,17 @@
+COMMON
+100x faster than Hadoop MapReduce in memory, or 10x faster on disk.
+including SQL and DataFrames, MLlib for machine learning, GraphX, and Spark Streaming.
+
 DAG
+execution engine that supports acyclic data flow and in-memory computing.
+
+CLUSTER MANAGER
+standalone, mesos and yarn
+Spark runs on Hadoop, Mesos, standalone, or in the cloud. It can access diverse data sources including HDFS, Cassandra, HBase, and S3.
+
+HDFS (Hadoop Distributed File System) The storage layer of the Hadoop ecosystem.
+
+Tasks: Each stage has some tasks, one task per partition. One task is executed on one partition of data
+on one executor (machine).
+
+
