@@ -14,4 +14,26 @@ HDFS (Hadoop Distributed File System) The storage layer of the Hadoop ecosystem.
 Tasks: Each stage has some tasks, one task per partition. One task is executed on one partition of data
 on one executor (machine).
 
+Automatic SparkSession in Databricks: In Databricks, a SparkSession is automatically created and available as the variable spark when you start a notebook. You don’t need to manually define it using SparkSession.builder.appName(). Databricks pre-configures the SparkSession to simplify development, so writing this code is unnecessary unless you need a custom SparkSession with specific configurations.
 
+like:
+spark = SparkSession \
+.builder \
+.appName("Python Spark create RDD example") \
+.config("spark.some.config.option", "some-value") \
+.getOrCreate()
+
+################################################################################################################
+
+# Create a DataFrame
+data = [("Rakshit", 17), ("Aman", 18), ("Priya", 17)]
+df = spark.createDataFrame(data, ["name", "age"])
+
+# Function to process each row
+def process_row(row):
+    print(f"Name: {row['name']}, Age: {row['age']}")
+
+# Apply foreach (executed on worker nodes)
+df.foreach(process_row)
+
+Just like with RDDs, the print will run on worker nodes, so you may not see the output directly in your driver console — it goes to executor logs.
